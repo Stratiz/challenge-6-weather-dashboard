@@ -120,7 +120,7 @@ function PopulateDetailsForCity(city) { // Populates the main detail section wit
 
   GetWeatherDataForCity(city).then(function(data) {
     if (data.current) {
-      cityName.html('<h2 id="city-name" >' + city +" (" + GetDateStringFromTime(data.current.dt) + ")" + '<img id="weather-icon" src=http://openweathermap.org/img/wn/' + data.current.weather[0].icon + '.png></h2>')
+      cityName.html('<h2 id="city-name" >' + city +" (" + GetDateStringFromTime(data.current.dt) + ")" + '<img id="weather-icon" src=https://openweathermap.org/img/wn/' + data.current.weather[0].icon + '.png></h2>')
       temp.text("Temp: " + data.current.temp + "°F");
       wind.text("Wind: " + data.current.wind_speed + " MPH");
       humidity.text("Humidity: " + data.current.humidity + "%");
