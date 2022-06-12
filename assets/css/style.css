@@ -10,24 +10,13 @@ header {
   color: #fff;
 }
 
+/* Style HR elements for page */
+
 hr {
   position: relative;
   border: none;
   height: 2px;
   background: black;
-}
-
-/* Global button style */
-button {
-  background-color: #351C75;
-  color: #fff;
-  padding: 8px;
-  border: none;
-}
-
-button:hover {
-  outline: 0 !important; /* We hate outlines here */
-  background-color: #BD60E7;
 }
 
 /* List and ordered list behavior */
@@ -40,15 +29,6 @@ ol {
 
 li {
   counter-increment: olCounter;
-}
-
-/* -- Places the number before the content of the button and p -- */
-
-
-/* Styling for input boxes */
-
-input {
-  border-style:solid;
 }
 
 /* Custom classes */
@@ -65,6 +45,7 @@ input {
   height: 100%;
   padding: 10px;
 }
+
 .details-section {
   width: 70%;
   height: 100%;

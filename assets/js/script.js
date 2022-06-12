@@ -1,10 +1,7 @@
 // Harrison 6/12/2022
 
-// Define questions to be used in quiz.
-const API_KEY = "f607e93849c9d442eb9c7eb5d42266c8" // Terrible practice
-
 // Define constants
-const TIME_LIMIT = 75;
+const API_KEY = "f607e93849c9d442eb9c7eb5d42266c8" // Terrible practice
 
 //Helper functions
 
@@ -15,9 +12,7 @@ function GetDateStringFromTime(time) {
 
 // API functions
 
-
-// Makes query string from objject
-function makeQueryString(paramsObject) {
+function makeQueryString(paramsObject) { // Makes query string from object
   var rawQueryString = "?"; 
   var currentInteration = 0;
   let objectLength = Object.keys(paramsObject).length
@@ -31,7 +26,7 @@ function makeQueryString(paramsObject) {
   return encodeURI(rawQueryString);
 }
 
-async function GetCityLocation(city) {
+async function GetCityLocation(city) { // Gets Longitude and Latitude from a city
   var locationData = await fetch("http://api.openweathermap.org/geo/1.0/direct" + makeQueryString({q:city,appid:API_KEY})).then(response => response.json());
   if (locationData && locationData[0] && locationData[0].lat) {
     return {lon : locationData[0].lon, lat : locationData[0].lat}
@@ -40,7 +35,7 @@ async function GetCityLocation(city) {
   }
 }
 
-async function GetWeatherDataForCity(city) {
+async function GetWeatherDataForCity(city) { // Gets weather information from a city name
   let locationData = await GetCityLocation(city)
   if (locationData.lat) {
     var weatherData = await fetch("https://api.openweathermap.org/data/2.5/onecall" + makeQueryString({
@@ -59,7 +54,7 @@ async function GetWeatherDataForCity(city) {
   return await {message : "Failed to get location"}
 }
 
-//
+// Data getter and setter function for history
 function getHistory() { // Fetches the leaderboard data from localStorage
   let historyList = JSON.parse(localStorage.getItem("history"));
   if (!historyList) {
@@ -85,19 +80,18 @@ function addToHistory(name) { //Adds a user to the leaderboard
   return false;
 }
 
-//
+// HTML functions
 
 let historyList = $("#previous-search")
-function AddHistoryButton(cityName) {
+
+function AddHistoryButton(cityName) { // Adds a button to the history list
   var newListItem = $("<li></li>");
   newListItem.append($('<button class="btn btn-secondary" style="width: 100%; margin-top: 10px;">'+ cityName +'</button>'));
 
   historyList.append(newListItem);
-  
 }
 
-function MakeDayObject(data) {
-  
+function MakeDayObject(data) { // Makes the JQuery object for a daily forcast entry
 
   var mainDiv = $('<div class="col daily-entry"></div>')
   var date = $('<h3>' + GetDateStringFromTime(data.dt) +'</h3>')
@@ -115,8 +109,7 @@ function MakeDayObject(data) {
   return mainDiv
 }
 
-
-function PopulateDetailsForCity(city) {
+function PopulateDetailsForCity(city) { // Populates the main detail section with weather information
   var cityName = $("#city-name");
   var temp = $("#temp");
   var wind = $("#wind");
@@ -126,7 +119,6 @@ function PopulateDetailsForCity(city) {
   var dailyList = $("#5-day")
 
   GetWeatherDataForCity(city).then(function(data) {
-    console.log(data);
     if (data.current) {
       cityName.html('<h2 id="city-name" >' + city +" (" + GetDateStringFromTime(data.current.dt) + ")" + '<img id="weather-icon" src=http://openweathermap.org/img/wn/' + data.current.weather[0].icon + '.png></h2>')
       temp.text("Temp: " + data.current.temp + "°F");
@@ -148,7 +140,7 @@ function PopulateDetailsForCity(city) {
         uv.css("background-color","#D83484");
       }
 
-      // daily
+      // Populate daily forcast
 
       dailyList.empty();
       for (i=1; i<=5; i++) {
@@ -171,6 +163,7 @@ $(async function() {
   var searchButton = $('#search-btn');
   var searchInput = $('#search-box');
 
+  // Populate data when search button is clicked
   searchButton.on('click',function() {
     var inputValue = searchInput.val();
     if (inputValue && inputValue.length > 0) {
@@ -181,13 +174,14 @@ $(async function() {
     }
   })
 
-  
-  // Quiz related button binds
+  // Get data from previous searches
   previousSearchList.on("click", "button", function(element) {
     console.log(element)
     PopulateDetailsForCity(element.currentTarget.innerText);
   })
 
+
+  // Populate previous searches.
   for (city of getHistory()) {
     AddHistoryButton(city);
   }
