@@ -17,8 +17,8 @@
     <header class="top">
         <h1 class="display-3" style="text-align: center">Weather Dashboard</h1>
     </header>
-    <!-- Main div for weather dashboard -->
-    <div class="row" style="margin-right: 10px; margin-left: 10px;">
+    <!-- Main for weather dashboard -->
+    <main class="row" style="margin-right: 10px; margin-left: 10px;">
         <!-- Section for searching for cities -->
         <section id="search" class="search-section">
             <h2>Search for a city:</h2>
@@ -31,19 +31,19 @@
         </section>
         <!-- Section for weather details -->
         <section id="details" class="details-section">
-            <div style="padding:5px; border: solid; border-width: 2px; border-color: black;">
+            <article style="padding:5px; border: solid; border-width: 2px; border-color: black;">
                 <h2 id="city-name" >Search for a city<img id="weather-icon" src="https://openweathermap.org/img/wn/10d.png" alt="Weather Icon" ></h2>
                 <p id="temp">Temp: ???°F</p>
                 <p id="wind">Wind: ??? MPH</p>
                 <p id="humidity">Humidity: ???%</p>
                 <p>UV Index: <span id="uv" class="rounded uv-index" style="background-color: rgb(37, 37, 37);">???</span></p>
-            </div>
+            </article>
             <h3 style="margin-top: 15px">5-Day Forecast:</h3>
             <div id="5-day" class="row" style="margin: auto">
                 <!-- Forcast data populates here -->
             </div>
         </section>
-    </div>
+    </main>
 </body>
 
 <!-- require jquery and custom javascript -->
