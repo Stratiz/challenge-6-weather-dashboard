@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Import bootstrap and custom style sheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <title>Coding quiz!</title>
+</head>
+
+<body>
+    <header class="top">
+        <h1 class="display-3" style="text-align: center">Weather Dashboard</h1>
+    </header>
+    <div class="row" style="margin-right: 10px; margin-left: 10px;">
+        
+        <section id="search" class="search-section">
+            <h2>Search for a city:</h2>
+            <input id="search-box"class="form-control" style="width: 100%" placeholder="San Diego"></input>
+            <button id="search-btn" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Search</button>
+            <hr>
+            <ol id="previous-search">
+
+            </ol>
+        </section>
+        <section id="details" class="details-section">
+            <div style="padding:5px; border: solid; border-width: 2px; border-color: black;">
+                <h2 id="city-name" >Search for a city<img id="weather-icon" src="http://openweathermap.org/img/wn/10d.png" alt="Weather Icon" ></h2>
+                <p id="temp">Temp: ???</p>
+                <p id="wind">Wind: ??? MPH</p>
+                <p id="humidity">Humidity: ??? %</p>
+                <p>UV Index: <span id="uv" class="rounded uv-index" style="background-color: rgb(37, 37, 37);">???</span></p>
+            </div>
+            <h3 style="margin-top: 15px">5-Day Forecast:</h3>
+            <div id="5-day" class="row" style="margin: auto">
+                
+            </div>
+        </section>
+    </div>
+</body>
+
+<!-- require jquery and custom javascript -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="./assets/js/script.js"></script>
+
+</html>

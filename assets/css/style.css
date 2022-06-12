@@ -1,0 +1,95 @@
+/* Everything under the body will have the following default traits */
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  padding: 10px;
+}
+
+header {
+  background-image: linear-gradient(to right, #3B6EC4 , #230555);
+  color: #fff;
+}
+
+hr {
+  position: relative;
+  border: none;
+  height: 2px;
+  background: black;
+}
+
+/* Global button style */
+button {
+  background-color: #351C75;
+  color: #fff;
+  padding: 8px;
+  border: none;
+}
+
+button:hover {
+  outline: 0 !important; /* We hate outlines here */
+  background-color: #BD60E7;
+}
+
+/* List and ordered list behavior */
+
+ol {
+  list-style: none;
+  counter-reset: olCounter;
+  padding-left: 0;
+}
+
+li {
+  counter-increment: olCounter;
+}
+
+/* -- Places the number before the content of the button and p -- */
+
+
+/* Styling for input boxes */
+
+input {
+  border-style:solid;
+}
+
+/* Custom classes */
+
+.leaderboard-entry {
+  background-color: #D9D3E9;
+  font-size: xx-large;
+  padding: 3px;
+}
+
+.search-section {
+  float: left;
+  width: 30%;
+  height: 100%;
+  padding: 10px;
+}
+.details-section {
+  width: 70%;
+  height: 100%;
+  padding: 10px;
+  
+}
+
+.daily-entry {
+  background-color: #33475A;
+  margin: 5px;
+  padding: 10px;
+}
+
+.daily-entry p {
+  color: #fff;
+}
+
+.daily-entry h3 {
+  color: #fff;
+}
+
+.uv-index {
+  color: #fff; 
+  padding-left: 8px; 
+  padding-right: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
