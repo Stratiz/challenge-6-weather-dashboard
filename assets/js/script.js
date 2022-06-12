@@ -27,7 +27,7 @@ function makeQueryString(paramsObject) { // Makes query string from object
 }
 
 async function GetCityLocation(city) { // Gets Longitude and Latitude from a city
-  var locationData = await fetch("http://api.openweathermap.org/geo/1.0/direct" + makeQueryString({q:city,appid:API_KEY})).then(response => response.json());
+  var locationData = await fetch("https://api.openweathermap.org/geo/1.0/direct" + makeQueryString({q:city,appid:API_KEY})).then(response => response.json());
   if (locationData && locationData[0] && locationData[0].lat) {
     return {lon : locationData[0].lon, lat : locationData[0].lat}
   } else {
@@ -95,7 +95,7 @@ function MakeDayObject(data) { // Makes the JQuery object for a daily forcast en
 
   var mainDiv = $('<div class="col daily-entry"></div>')
   var date = $('<h3>' + GetDateStringFromTime(data.dt) +'</h3>')
-  var img = $('<img src="http://openweathermap.org/img/wn/' + data.weather[0].icon +'.png">')
+  var img = $('<img src="https://openweathermap.org/img/wn/' + data.weather[0].icon +'.png">')
   var temp = $('<p>Temp: ' + data.temp.day + '°F</p>')
   var wind = $('<p>Wind: ' + data.wind_speed + ' MPH</p>')
   var humidity = $('<p>Humidity: ' + data.humidity + '%</p>')
