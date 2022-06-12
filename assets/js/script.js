@@ -176,7 +176,6 @@ $(async function() {
 
   // Get data from previous searches
   previousSearchList.on("click", "button", function(element) {
-    console.log(element)
     PopulateDetailsForCity(element.currentTarget.innerText);
   })
 
